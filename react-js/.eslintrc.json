@@ -26,6 +26,8 @@
   },
   "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
   "rules": {
+    "camelcase": "off",
+
     "prettier/prettier": "error",
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-props-no-spreading": "off",
@@ -37,22 +39,19 @@
     "import/prefer-default-export": "off",
     "import/no-duplicates": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "eslint-disable": [
-      "camelcase"
-    ],
     "@typescript-eslint/interface-name-prefix": [
-      "error",
+      "off",
       {
         "prefixWithI": "always"
       }
     ],
-    "@typescript-eslint/camelcase": "off",
     "@typescript-eslint/explicit-function-return-type": [
       "error",
       {
         "allowExpressions": true
       }
     ],
+
     "import/extensions": [
       "error",
       "ignorePackages",
