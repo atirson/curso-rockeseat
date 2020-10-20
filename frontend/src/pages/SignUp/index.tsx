@@ -16,20 +16,19 @@ const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const handleSubmit = useCallback(async (data: JSON) => {
     try {
+      formRef.current?.setErrors({});
       const schema = Yup.object().shape({
         name: Yup.string().required('Nome obrigatório'),
         email: Yup.string()
-          .email('Digite um e-mail válido')
-          .required('E-mail obrigatório'),
+          .required('E-mail obrigatório')
+          .email('Digite um e-mail válido'),
         password: Yup.string().min(6, 'No mínimo 6 caracteres'),
       });
-
       await schema.validate(data, {
         abortEarly: false,
       });
     } catch (err) {
       const errors = getValidationErrors(err);
-
       formRef.current?.setErrors(errors);
     }
   }, []);
