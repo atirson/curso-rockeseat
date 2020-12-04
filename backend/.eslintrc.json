@@ -27,6 +27,7 @@
     "class-methods-use-this": "off",
     "camelcase": "off",
     "no-console": "off",
+    "eslint/no-delete-var": "off",
     "no-useless-constructor": "off",
     "@typescript-eslint/no-unused-vars": ["error", {
       "argsIgnorePattern": "_"
