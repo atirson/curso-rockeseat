@@ -22,11 +22,11 @@ describe('AutheticateUser', () => {
       email: 'jonhdoe@gmail.com',
       password: '123456',
     });
-    console.log(user);
+    // console.log(user);
 
     const response = await autheticateUser.execute({
       email: 'jonhdoe@gmail.com',
-      password: '123456',
+      password: user.password,
     });
 
     expect(response).toHaveProperty('token');
