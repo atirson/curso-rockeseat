@@ -1,21 +1,25 @@
+import fs from 'fs';
 import IStorageProvider from '../models/IStorageProvider';
 
-class DiskStorageProvider implements IStorageProvider {
+
+
+class FaceStorageProvider implements IStorageProvider {
   private storage: string[] = [];
 
-  public async saveFile(file: string): Promise<string> {
-    this.storage.push(file);
+  public async saveFile(file: string) : Promise<string> {
+  this.storage.push(file);
 
-    return file;
+  return file;
   }
 
-  public async deleteFile(file: string): Promise<void> {
+  public async deleteFile(file: string) : Promise<void> {
     const findIndex = this.storage.findIndex(
-      storageFile => storageFile === file,
+      storageFile => storageFile == file,
     );
 
     this.storage.splice(findIndex, 1);
   }
+
 }
 
-export default DiskStorageProvider;
+export default FaceStorageProvider;

@@ -1,33 +1,36 @@
+import path from 'path';
+import fs from 'fs';
 import { injectable, inject } from 'tsyringe';
-
 import AppError from '@shared/errors/AppError';
-import User from '@modules/users/infra/typeorm/entities/User';
+import uploadConfig from '@config/upload';
+import User from '../infra/typeorm/entities/User';
+
+import IUserRepository from '../repositories/IUsersRepository';
 import IStorageProvider from '@shared/container/providers/StorageProvider/models/IStorageProvider';
-import IUsersRepository from '../repositories/IUsersRepository';
 
-interface IRequest {
-  user_id: string;
-  avatarFilename: string;
+interface Request{
+  avatar_id:string;
+  avatarFilename:string;
 }
-
 @injectable()
-class UpdateUserAvatarService {
+class updateUserAvatarService{
   constructor(
     @inject('UsersRepository')
-    private usersRepository: IUsersRepository,
+    private usersRepository: IUserRepository,
 
     @inject('StorageProvider')
     private storageProvider: IStorageProvider,
-  ) {}
+    ){
 
-  public async execute({ user_id, avatarFilename }: IRequest): Promise<User> {
-    const user = await this.usersRepository.findById(user_id);
+  }
+  public async execute({ avatar_id, avatarFilename } :Request ): Promise<User> {
 
-    if (!user) {
-      throw new AppError('Only authenticated users can change avatar', 401);
+    const user = await this.usersRepository.findById(avatar_id);
+
+    if(!user){
+      throw new AppError('Only authenticated users can change avatar .', 401);
     }
-
-    if (user.avatar) {
+    if(user.avatar){
       await this.storageProvider.deleteFile(user.avatar);
     }
 
@@ -41,4 +44,4 @@ class UpdateUserAvatarService {
   }
 }
 
-export default UpdateUserAvatarService;
+export default updateUserAvatarService;

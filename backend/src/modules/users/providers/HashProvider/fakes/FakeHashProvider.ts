@@ -1,12 +1,13 @@
+import { hash, compare } from 'bcryptjs';
 import IHashProvider from '../models/IHashProvider';
 
 class FakeHashProvider implements IHashProvider {
-  public async generateHash(payload: string): Promise<string> {
+  public async generateHash(payload:string):Promise<string>{
     return payload;
   }
 
-  public async compareHash(paylaod: string, hashed: string): Promise<boolean> {
-    return paylaod === hashed;
+  public async compareHash(payload:string, hashed: string): Promise<boolean>{
+    return payload == hashed;
   }
 }
 

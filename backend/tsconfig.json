@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
-
     "target": "es5",
     "module": "commonjs",
-    "outDir": "./dist",
-    "rootDir": "./src",
+   "outDir": "./dist",
+   "rootDir": "./src",
     "strict": true,
-    "strictPropertyInitialization": false,
-    "baseUrl": "./src",
-    "paths": {
+     "strictPropertyInitialization": false,
+     "baseUrl": "./src",
+     "paths": {
       "@modules/*": ["modules/*"],
       "@config/*": ["config/*"],
       "@shared/*": ["shared/*"]
@@ -16,6 +15,7 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   }
